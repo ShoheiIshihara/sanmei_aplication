@@ -1,0 +1,1 @@
+import{a as r}from"./app.830e7626.js";function l({forInput:e,value:t,className:m,children:o}){return r("label",{htmlFor:e,className:"block font-medium text-sm text-ebb-700 "+m,children:t||o})}export{l as I};
