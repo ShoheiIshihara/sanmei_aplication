@@ -1,17 +1,15 @@
 import React from 'react';
-import { useEffect,useState } from 'react';
 
-import ResultIsouTableContent from './parts/ResultIsouTableContent';
+import TaiunNenunIsou from './parts/isou/TaiunNenunIsou';
+import ResultLayout from './parts/ResultLayout';
+import TsukiunHiunIsou from './parts/isou/TsukiunHiunIsou';
 
 export default function ResultIsoho() {
 
-
     return(
-        <div className="h-3/4  border rounded-xl mx-2 sm:m-5 sm:mt-1 bg-white px-10 py-3 overflow-y-scroll " >
-
-            <ResultIsouTableContent  isouTiming="taiun" />
-
-
-        </div>
+        <ResultLayout title='位相法'>
+            <TaiunNenunIsou isouTiming="taiun"/>
+            <TsukiunHiunIsou isouTiming="tsukiun"/>
+        </ResultLayout>
     );
 }

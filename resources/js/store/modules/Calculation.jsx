@@ -508,7 +508,6 @@ const calculation = createSlice({
     reducers: {
         calc(state, getCalculation){
             state.result = getCalculation.payload;
-            // console.log(state.result)
         },
         isouMonth(state, tsukiun){
             const newState={...state};
@@ -537,25 +536,18 @@ const getCalculationResultFromApi = (appraisedParson) => {
 
 const getCalcIsouMonthFromApi = (kanshiNo, subYear) =>{
     return async(dispatch) => {
-        // console.log(kanshiNo);
-        // console.log(subYear);
         const res =await calcIsouMonthAtApi(kanshiNo, subYear);
-        // console.log(res);
         dispatch(isouMonth(res));
     }
 }
 const getCalcIsouDayFromApi = (kanshiNo, subYear, subMonth) =>{
     return async(dispatch) => {
-        // console.log(kanshiNo);
-        // console.log(subYear);
         const res =await calcIsouDayAtApi(kanshiNo, subYear, subMonth);
-        // console.log(res);
         dispatch(isouDay(res));
     }
 }
 const getCompatibilityResultFromApi = (parsons) =>{
     return async(dispatch) => {
-        console.log('store/module/Calculation');
         const res = await getCompatibilityResultAtApi(parsons)
         dispatch(compatibilityResult(res))
     }

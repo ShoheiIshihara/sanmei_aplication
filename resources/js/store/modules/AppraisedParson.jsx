@@ -1,5 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice } from "@reduxjs/toolkit";
 import { getAppraisedParsonList } from "@/api";
 
 const appraisedParson = createSlice({
@@ -33,47 +32,37 @@ const appraisedParson = createSlice({
             return newState;
         },
         storeRegistParson(state,payload){
-            // console.log(payload)
-            // console.log(state)
             const newState={...state};
             switch(payload.payload.type){
                 case "name":
-                    // console.log(payload.payload)
                     newState.registParson.newName = payload.payload.value;
                     state=newState;
                     break;
                 case "birth_year":
-                    // console.log(payload.payload)
                     newState.registParson.newBirthYear = payload.payload.value;
                     state=newState;
                     break;
                 case "birth_month":
-                    // console.log(payload.payload)
                     newState.registParson.newBirthMonth = payload.payload.value;
                     state=newState;
                     break;
                 case "birth_day":
-                    // console.log(payload.payload)
                     newState.registParson.newBirthDay = payload.payload.value;
                     state=newState;
                     break;
                 case "birth_hour":
-                    // console.log(payload.payload)
                     newState.registParson.newBirthHour = payload.payload.value;
                     state=newState;
                     break;
                 case "birth_minite":
-                    // console.log(payload.payload)
                     newState.registParson.newBirthMinite = payload.payload.value;
                     state=newState;
                     break;
                 case "gender":
-                    // console.log(payload.payload)
                     newState.registParson.newGender = payload.payload.value;
                     state=newState;
                     break;
                 case "initialize":
-                    console.log("initialize!")
                     newState.registParson = {
                         newName:"",
                         newBirthYear:"1990",
@@ -84,19 +73,15 @@ const appraisedParson = createSlice({
                         newGender:"1",
                     }
                     state=newState;
-                    // console.log(state);
                     break;
                 default:
                     return state;
             }
         },
         storeUpdateParson(state,payload){
-            // console.log('storeUpdateParson!');
             const newState={...state};
             switch(payload.payload.type){
                 case "read":
-                    // console.log('read Done!')
-                    // console.log(payload.payload.value)
                     newState.updateParson.appraised_parsons_id = payload.payload.value.appraised_parsons_id;
                     newState.updateParson.editName = payload.payload.value.appraised_parsons_name;
                     newState.updateParson.editBirthYear = payload.payload.value.birth_year;
@@ -108,42 +93,34 @@ const appraisedParson = createSlice({
                     state=newState;
                     break;
                 case "name":
-                    // console.log(payload.payload)
                     newState.updateParson.editName = payload.payload.value;
                     state=newState;
                     break;
                 case "birth_year":
-                    // console.log(payload.payload)
                     newState.updateParson.editBirthYear = payload.payload.value;
                     state=newState;
                     break;
                 case "birth_month":
-                    // console.log(payload.payload)
                     newState.updateParson.editBirthMonth = payload.payload.value;
                     state=newState;
                     break;
                 case "birth_day":
-                    // console.log(payload.payload)
                     newState.updateParson.editBirthDay = payload.payload.value;
                     state=newState;
                     break;
                 case "birth_hour":
-                    // console.log(payload.payload)
                     newState.updateParson.editBirthHour = payload.payload.value;
                     state=newState;
                     break;
                 case "birth_minite":
-                    // console.log(payload.payload)
                     newState.updateParson.editBirthMinite = payload.payload.value;
                     state=newState;
                     break;
                 case "gender":
-                    // console.log(payload.payload)
                     newState.updateParson.editGender = payload.payload.value;
                     state=newState;
                     break;
                 case "initialize":
-                    // console.log("initialize!")
                     newState.updateParson = {
                         id:"",
                         editName:"",
@@ -155,7 +132,6 @@ const appraisedParson = createSlice({
                         editGender:"",
                     }
                     state=newState;
-                    // console.log(state);
                     break;
                 default:
                     return state;
@@ -173,7 +149,6 @@ const getAppraisedParsonListFromApi =  (user_id) => {
         dispatch(lead(res));
     }
 }
-// const storeNewParson = ()
 
   export { lead, storeRegistParson, storeUpdateParson, getAppraisedParsonListFromApi};
   export default appraisedParson.reducer;

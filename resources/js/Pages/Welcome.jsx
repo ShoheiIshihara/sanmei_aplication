@@ -39,7 +39,7 @@ export default function Welcome(props) {
         <>
             <Head title="Welcossse" />
 
-            <div className="mx-auto h-screen box-border ">
+            <div className="mx-auto h-screen box-border bg-white">
                 <header className="  items-center sticky  border-b border-gray-100">
                             <div className="flex justify-between h-16">
                                 <div className="shrink-0 flex items-center">
@@ -50,7 +50,6 @@ export default function Welcome(props) {
                             
                                 <div className="top-0 right-0 px-6 py-4 sm:block ">
                                 <button variant="success" className="hidden sm:inline p-2 text-sea-pink-900 text-sm hover:text-ebb-700 hover:underline" onClick={openModal}> What's COMPASS</button>    
-
                                     {props.auth.user ? (
                                         <Link href={route('dashboard')} className="text-sm text-gray-900 dark:text-gray-500 underline">
                                             マイページへ
@@ -127,7 +126,7 @@ export default function Welcome(props) {
                         
                     </div>
                 </div>
-                <footer className='text-center text-xs block text-ebb-800 absolute w-full bottom-2'>&copy; 2022 COMPASS</footer>  
+                <footer className='text-center text-xs block text-ebb-800 absolute w-full bottom-2'>&copy; 2023 COMPASS</footer>  
             </div>
             
 

@@ -4,7 +4,7 @@ import jsPDF from "jspdf";
 import { useSelector,useDispatch } from "react-redux";
 import { useEffect,useState } from 'react';
 
-import ResultTableTd from '@/Components/ResultTableTd';
+import ResultTableTd from '@/Components/result/parts/ResultTableTd';
 
 
 
@@ -17,57 +17,31 @@ export const ExportPdfComponent = () =>{
     const pdfDownloadHandler = async() =>{
         await setIsShow(true);
         let downloadEle ='';
-        // console.log(downloadEle)
         const name = result.profile.name;
-        // console.log('pdfDownloadHandler Done!')
        const target1 = document.getElementById('karute');
-    //    const target2 = document.getElementById('honshitsu');
        if(target1 === null ) return;
-    //    console.log(name);
 
        //個性診断カルテ出力
        html2canvas(target1, { scale:1.5, allowTaint:true, useCORS:true, }).then((canvas)=>{
            let downloadEle = document.createElement("a");
-            console.log('1tume');
-        // console.log(downloadEle);
            downloadEle.href = canvas.toDataURL("image/jpeg", 1.0);
            downloadEle.download = `${name}様_自己分析シート①.jpg`;
            downloadEle.click();
-        //    console.log('1tume END');
-        //    console.log(downloadEle);
-
        });
        setIsShow(false);
-
-       // html2canvas(target1, { scale: 3.5 }).then((canvas)=>{
-       //     const imgData = canvas.toDataURL('image/svg', 1.0);
-       //     let pdf = new jsPDF();
-       //     console.log(canvas.width);
-       //     console.log(canvas.height);
-       //     pdf.addImage(imgData, 'SVG' , 5, 10, canvas.width / 18, canvas.height /18);
-       //     pdf.addPage();
-       //     pdf.addImage(imgData, 'SVG' , 5, 10, canvas.width / 18, canvas.height /18);//詳細表示のコンポーネントにする
-       //     pdf.save('個人診断カルテ.pdf');
-       // });
     }
     const exportCardComponent = async() =>{
         await setIsShow(true);
 
         const name = result.profile.name;
-        // console.log('pdfDownloadHandler Done!')
-    //    const target1 = document.getElementById('karute');
-       const target2 = document.getElementById('honshitsu');
-       if(target2 === null ) return;
+        const target2 = document.getElementById('honshitsu');
+        if(target2 === null ) return;
        //    詳細カルテ出力
         html2canvas(target2, {  scale:1.5, allowTaint:true, useCORS:true, }).then((canvas)=>{
-        let downloadEle = document.createElement("a");
-        // console.log('2tume');
-        downloadEle.href = canvas.toDataURL("image/jpeg", 1.0);
-        downloadEle.download = `${name}様_自己分析シート②.jpg`;
-        downloadEle.click();
-        // console.log('2tume END');
-        // console.log(downloadEle);
-
+            let downloadEle = document.createElement("a");
+            downloadEle.href = canvas.toDataURL("image/jpeg", 1.0);
+            downloadEle.download = `${name}様_自己分析シート②.jpg`;
+            downloadEle.click();
         });
         setIsShow(false);
     }
@@ -93,7 +67,6 @@ export const ExportPdfComponent = () =>{
             <div className={`${isShow ? '': 'hidden'}`}>
                 <ComponentPDF />
             </div>
-
         </>
     )
 }
@@ -156,13 +129,10 @@ export const ExportPdfComponent = () =>{
         const endDateTimeMonthStr = endDateTimeMonthUnix.toLocaleDateString();
 
         useEffect(() => {ryouiki();}); //レンダリング後に実行するように指定
-        // console.log(result);
-        // console.log(endDateTimeStr);
 
 
     return   (
         <>
-        {/* 125dpi 1462×1033  200dpi h-[2339px] w-[1654px]*/}
             <div id="karute" className={`w-[1033px]  bg-ebb-50 `}>
                 <div className="">
                     {/* title */}
@@ -227,7 +197,6 @@ export const ExportPdfComponent = () =>{
                                         />
                                     </div>
                                     <div className="absolute left-[290px] top-[110px]">
-                                        {/* <span className="absolute -left-[25px] -top-[30px] z- text-white text-2xl bg-red-200 rounded-full p-2 mx-2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> */}
                                         <div className="rabsolute ">
                                             <span className="text-4xl mr-3 rounded-full p-2">{result.sanmei.action_area.nikkanshi_id}.</span>
                                             <span className="text-4xl w-[700px]">
@@ -238,7 +207,6 @@ export const ExportPdfComponent = () =>{
 
                                         </div>
                                     </div>
-                                    {/* <div className="px-4 py-2 whitespace-pre-wrap text-justify ">{result.individual_psychology.honshitsu_detail}</div> */}
                                 </div>
                                 <div className="grid grid-cols-1">
                                     <div className="resultAny grid grid-cols-3 ">
@@ -296,8 +264,6 @@ export const ExportPdfComponent = () =>{
                                         <div className="grid grid-cols-4 gap-4">
                                             <p className="flex justify-center items-center font-medium text-2xl pb-[20px]">{result.individual_psychology.rail}</p>
                                             <p className="col-span-3 pt-0 pb-4 pr-4 text-justify whitespace-pre-line text-lg text-black leading-relaxed ">{result.individual_psychology.rail_detail}</p>
-
-                                            {/* <p className="h-[100px] w-[100px] border text-center m-2">img</p> */}
                                         </div>
                                     </div>
 
@@ -306,9 +272,6 @@ export const ExportPdfComponent = () =>{
                                         <div className="grid grid-cols-4 gap-4">
                                             <p className="flex justify-center items-center font-medium  text-2xl pb-[20px]">{result.individual_psychology.rhythm}</p>
                                             <p className="col-span-3  pt-0 pb-4 pr-4 text-justify whitespace-pre-line text-lg text-black leading-relaxed">{result.individual_psychology.rhythm_detail}</p>
-
-
-                                            {/* <p className="h-[100px] w-[100px] border text-center m-2">img</p> */}
                                         </div>
                                     </div>
                                 </div>
@@ -428,7 +391,7 @@ export const ExportPdfComponent = () =>{
 
                                 <div className={`${borderColor} border-t-4 grid grid-cols-3`}>
                                     <div className={`${borderColor} energy border-r-4`}>
-                                        <div className={`${borderColor}  ${sanmeiLabelStyle} border-b-4  h-[48px] `}>エネルギー</div>
+                                        <div className={`${borderColor}  ${sanmeiLabelStyle} border-b-4  h-[48px] `}>魂のエンジンの大きさ</div>
                                             <div className="text-4xl text-center py-6">
                                                 {result.sanmei.energy[10]}
                                             </div>
@@ -540,7 +503,6 @@ export const ExportPdfComponent = () =>{
                                     <div className="text-xl text-justify whitespace-pre-line leading-8 border-4 rounded-[20px] px-[40px] pt-[30px] bg-white pb-[50px]"><span>&nbsp;&nbsp;&nbsp;</span>
                                         {result.individual_psychology.honshitsu_detail}
                                     </div>
-                                    {/* <div className="px-4 py-2 whitespace-pre-wrap text-justify ">{result.individual_psychology.honshitsu_detail}</div> */}
                                 </div>
                         </section>
                 </div>

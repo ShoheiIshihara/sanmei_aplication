@@ -1,7 +1,3 @@
-import { useDispatch } from "react-redux";
-import { setIsLoading, resetIsLoading } from '../store/modules/Common';
-
-
 // const urlAPI ='http://127.0.0.1:8000/api'; //API接続先
 const urlAPI ='https://sanmei-application.com/api'; //API接続先
 
@@ -11,13 +7,11 @@ const urlAPI ='https://sanmei-application.com/api'; //API接続先
 const getAppraisedParsonList = (user_id) => {
     return  new Promise((resolve)=>{
 
-        // dispatch(setIsLoading());
         axios.get(urlAPI + "/appraisedparsonregister/show", {
             params: {
                 user_id : user_id
             }
         }).then((res) =>{
-            // console.log(res);
             resolve(res.data);
 
         })
@@ -26,8 +20,6 @@ const getAppraisedParsonList = (user_id) => {
 
 //
 const postRegistParsonAtApi = async (user_id,registParson) => {
-        // console.log("postRegistParsonAtApi")
-        // console.log(registParson);
         await axios.post(urlAPI + "/appraisedparsonregister",{
         params: {
             name :  registParson.newName,
@@ -40,14 +32,11 @@ const postRegistParsonAtApi = async (user_id,registParson) => {
             user_id : user_id,
         }
     }).then(() =>{
-        // console.log('postRegistParsonAtApi Done!')
         return;
     })
 }
 
 const patchUpdateParsonAtApi = async (updateParson) => {
-    // console.log("patchUpdateParsonAtApi")
-    // console.log(updateParson);
     await axios.patch(urlAPI + "/appraisedparsonregister/update",{
         params: {
             id : updateParson.appraised_parsons_id,
@@ -60,7 +49,6 @@ const patchUpdateParsonAtApi = async (updateParson) => {
             gender : updateParson.editGender,
         }
     }).then((res) =>{
-        // console.log(res.data)
         return;
     })
 }
@@ -71,7 +59,6 @@ const deleteAtApi = async (appraised_parsons_id) => {
             appraised_parsons_id :  appraised_parsons_id
         }
     }).then((res) =>{
-        // console.log('deleteAtApi Done!')
         return;
     })
 }
@@ -87,17 +74,14 @@ const calculationAtApi =(appraisedParson)=>{
                 birth_hour : appraisedParson['birth_hour'],
                 birth_minite : appraisedParson['birth_minite'],
                 gender : appraisedParson['gender'],
-                // user_id : user_id
             }
         }).then((res) =>{
-            // console.log(res.data);
             resolve(res.data);
         })
     })
 }
 
 const calcIsouMonthAtApi = (kanshiNo, subYear) =>{
-    console.log(kanshiNo.nikkanshi_id)
     return new Promise((resolve)=>{
         axios.get(urlAPI + "/calclation/isouMonth", {
             params: {
@@ -107,13 +91,11 @@ const calcIsouMonthAtApi = (kanshiNo, subYear) =>{
                 nenkanshiNo : kanshiNo.nenkanshi_id,
             }
         }).then((res) =>{
-            // console.log(res.data);
             resolve(res.data);
         })
     })
 }
 const calcIsouDayAtApi = (kanshiNo, subYear, subMonth) =>{
-    // console.log(kanshiNo.nikkanshi_id)
     return new Promise((resolve)=>{
         axios.get(urlAPI + "/calclation/isouDay", {
             params: {
@@ -124,15 +106,12 @@ const calcIsouDayAtApi = (kanshiNo, subYear, subMonth) =>{
                 nenkanshiNo : kanshiNo.nenkanshi_id,
             }
         }).then((res) =>{
-            // console.log(res.data);
             resolve(res.data);
         })
     })
 }
 
 const getCompatibilityResultAtApi = (parsons) =>{
-    console.log('api/index');
-    console.log(parsons);
     return new Promise((resolve)=>{
         axios.get(urlAPI + "/calclation/compatibility",{
             params:{
@@ -140,7 +119,6 @@ const getCompatibilityResultAtApi = (parsons) =>{
                 'second_parson' : parsons.second_parson
             }
         }).then((res) =>{
-            console.log(res.data);
             resolve(res.data);
         })
     })
