@@ -46,7 +46,7 @@ export default function AppraisedParsonList(props){
     useEffect(() => {appraisedParsonListLead();},[]);
     return (
         <div className='h-full'>
-            <div className="bg-white borderrounded overflow-y-scroll h-[70%]">
+            <div className="bg-white borderrounded overflow-y-scroll h-[500px] md:h-[800px] ">
                 {appared_parsons.map((appared_parson,key)=>{
                     return (
                         <div className="list-card hover:bg-ebb-50 " key={key}>

@@ -64,7 +64,6 @@ export default function SideMenu(props){
             return
         }
         if(window.confirm(`${registParson.newName}  ${registParson.newBirthYear}.${registParson.newBirthMonth}.${registParson.newBirthDay}のデータを追加しますか？`)){
-            e.preventDefault();
             const user_id = props.props.auth.user.id;
             await postRegistParsonAtApi(user_id, registParson);
             window.alert('登録が完了しました。');

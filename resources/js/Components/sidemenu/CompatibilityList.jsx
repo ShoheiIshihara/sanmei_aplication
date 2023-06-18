@@ -70,7 +70,7 @@ export default function AppraisedParsonList(props){
     return (
         <>
         <div className='text-center pt-3 text-xl'>一人目選択</div>
-        <div className="h-32 mx-2 bg-white border p-2 rounded  overflow-y-scroll sm:h-1/4">
+        <div className="h-32 mx-2 bg-white border p-2 rounded  overflow-y-scroll h-[200px] md:h-[400px] ">
             {appared_parsons.map((appared_parson,key)=>{
                 return (
                 <div className="list-card hover:bg-ebb-50 " key={key}>
@@ -95,7 +95,7 @@ export default function AppraisedParsonList(props){
             )})}
         </div>
         <div className='text-center  pt-3 text-xl'>二人目選択</div>
-         <div className="h-32 mx-2 bg-white border p-2 rounded  overflow-y-scroll sm:h-1/4">
+         <div className="h-32 mx-2 bg-white border p-2 rounded  overflow-y-scroll h-[200px] md:h-[400px]">
          {appared_parsons.map((appared_parson2,key)=>{
              return (
              <div className="list-card hover:bg-ebb-50 " key={key}>
